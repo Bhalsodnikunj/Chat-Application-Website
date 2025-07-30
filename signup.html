@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Chat App</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('images (2).jpeg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    .signup-box {
+    
+      padding: 30px;
+      border-radius: 20px;
+     
+      text-align: center;
+      width: 350px;
+      transform: rotateY(0deg);
+      animation: floatBox 6s ease-in-out infinite;
+    }
+
+    @keyframes floatBox {
+      0%, 100% { transform: translateY(0px) rotateY(0deg); }
+      50% { transform: translateY(-20px) rotateY(10deg); }
+    }
+
+    h2 {
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00c6ff;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background: #f4f4f4;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      color: #fff;
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1) rotateY(10deg);
+      box-shadow: 0 0 20px #00c6ff;
+    }
+
+    p {
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .ring {
+      position: absolute;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
+    }
+    .ring:nth-child(1) { width: 400px; height: 400px; animation-duration: 20s; }
+    .ring:nth-child(2) { width: 300px; height: 300px; animation-duration: 25s; }
+    .ring:nth-child(3) { width: 200px; height: 200px; animation-duration: 30s; }
+
+    @keyframes rotate {
+      from { transform: rotateY(0deg) rotateX(0deg); }
+      to { transform: rotateY(360deg) rotateX(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="ring"></div>
+  <div class="ring"></div>
+  <div class="ring"></div>
+
+  <div class="signup-box">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+       <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html" style="color:#00c6ff;">Login</a></p>
+  </div>
+   <!-- ✅ JavaScript for Signup -->
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const user = {
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem("chatAppUser", JSON.stringify(user));
+      alert("Signup successful! You can now log in.");
+      window.location.href = "login.html"; // ✅ Redirect after signup
+    });
+  </script>
+</body>
+</html>

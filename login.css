@@ -1,0 +1,102 @@
+/* Body & background */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('images.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Login container */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Login box */
+.login-box {
+ 
+  border-radius: 20px;
+  padding: 30px;
+  
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Heading */
+.login-box h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s infinite alternate;
+}
+
+/* Glow animation */
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px #0072ff, 0 0 20px #00c6ff;
+  }
+  to {
+    text-shadow: 0 0 20px #00c6ff, 0 0 40px #0072ff;
+  }
+}
+
+/* Paragraph */
+.login-box p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  font-size: 1rem;
+}
+
+/* Login Button */
+.login-box button {
+  width: 106%;
+  padding: 12px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00c6ff, 0 0 25px #0072ff;
+}
+
+/* Signup link */
+.signup-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.signup-link a {
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

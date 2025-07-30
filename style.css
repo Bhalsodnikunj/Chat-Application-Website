@@ -1,0 +1,139 @@
+/* Reset and layout */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('images\ \(1\).jpeg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Card container */
+.welcome-box {
+  
+  padding: 40px 25px;
+  border-radius: 20px;
+  text-align: center;
+  
+  max-width: 450px;
+  width: 90%;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Header with glow text */
+h1 {
+  font-size: 2.2rem;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s infinite alternate;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px #0072ff, 0 0 20px #00c6ff;
+  }
+  to {
+    text-shadow: 0 0 20px #00c6ff, 0 0 40px #0072ff;
+  }
+}
+
+/* Description */
+p {
+  color: #ddd;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00c6ff, 0 0 25px #0072ff;
+}
+
+/* Image */
+.welcome-img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 10px;
+ 
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* Toast message */
+.toast-message {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: #00c6ff;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+.toast-message.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Button click effect */
+.btn.clicked {
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  box-shadow: 0 0 20px #00c6ff;
+}

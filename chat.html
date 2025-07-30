@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat App</title>
+  <style>
+  /* 3D CSS for chat container */
+   body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('images (3).jpeg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.chat-container {
+  width: 90%;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 20px;
+
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+.chat-container:hover {
+  transform: rotateX(0deg) rotateY(0deg);
+  box-shadow: 0 20px 80px rgba(0, 255, 255, 0.6);
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #a1a0a0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: inset 0 0 10px #00f2ff44;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 0 0 5px cyan;
+}
+
+.nav-actions button {
+  background: #222;
+  color: cyan;
+  border: 1px solid cyan;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-actions button:hover {
+  background: cyan;
+  color: #111;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* Chat box layout */
+.chat-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.messages {
+  height: 300px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid #00f2ff55;
+  box-shadow: inset 0 0 15px #00f2ff22;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: rgba(0, 255, 255, 0.1);
+  border-left: 3px solid cyan;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+/* Input form */
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #222;
+  color: cyan;
+  border: 1px solid cyan;
+}
+
+#chat-form button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: cyan;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#chat-form button:hover {
+  background: #00f2ff;
+  box-shadow: 0 0 10px cyan;
+}
+
+/* Upload preview area */
+.upload-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.upload-preview img,
+.upload-preview video {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00f2ff66;
+  border: 1px solid cyan;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-actions {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .nav-actions button {
+    flex: 1 1 45%;
+    margin-bottom: 10px;
+  }
+
+  .chat-box {
+    gap: 10px;
+  }
+
+  .messages {
+    height: 250px;
+    font-size: 0.95rem;
+  }
+
+  #chat-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #message-input {
+    width: 95%;
+  }
+
+  #chat-form button {
+    width: 100%;
+  }
+
+  .upload-preview img,
+  .upload-preview video {
+    width: 100%;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar h2 {
+    font-size: 1.1rem;
+  }
+
+  .nav-actions button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  #chat-form button {
+    font-size: 1rem;
+  }
+
+  .messages {
+    font-size: 0.9rem;
+  }
+
+  .upload-preview img,
+  .upload-preview video {
+    max-width: 120px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="navbar">
+      <h2>Chat</h2>
+
+    </div>
+
+    <div class="chat-box">
+      <div class="messages" id="messages">
+        <!-- Messages will appear here -->
+      </div>
+ 
+      <form id="chat-form">
+        <input type="text" id="message-input" placeholder="Type a message..." required />
+        <input type="file" id="file-upload" hidden multiple />
+      
+        <button type="submit">Send</button>
+      </form>
+
+      <div class="upload-preview" id="upload-preview"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('message-input');
+    const messages = document.getElementById('messages');
+    const fileUpload = document.getElementById('file-upload');
+    const preview = document.getElementById('upload-preview');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (text) {
+        addMessage(text);
+        input.value = '';
+      }
+    });
+
+    function addMessage(text) {
+      const div = document.createElement('div');
+      div.classList.add('message');
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    fileUpload.addEventListener('change', function(e) {
+      preview.innerHTML = '';
+      Array.from(fileUpload.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          let element;
+          if (file.type.startsWith('image/')) {
+            element = document.createElement('img');
+            element.src = ev.target.result;
+          } else if (file.type.startsWith('video/')) {
+            element = document.createElement('video');
+            element.src = ev.target.result;
+            element.controls = true;
+          } else {
+            element = document.createElement('div');
+            element.textContent = file.name;
+            element.style.padding = '10px';
+            element.style.background = '#555';
+            element.style.color = '#fff';
+            element.style.borderRadius = '10px';
+          }
+          preview.appendChild(element);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  </script>
+</body>
+</html>
